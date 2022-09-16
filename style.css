@@ -1,0 +1,36 @@
+@charset "UTF-8";
+
+h1{
+    margin-top: -40px;
+    text-align: center;
+}
+
+h2{
+    font-family: Courier, monospace;
+    color: green;
+    -webkit-text-stroke-width: .4px;
+    -webkit-text-stroke-color: white;
+    font-size: 2em;
+    text-align: center;
+}
+
+h3{
+    text-align: center;
+    color: white;
+    text-shadow: 2px 2px 2px black;
+    background-color: rgba(0, 0, 0, .7);
+}
+
+.redes{
+    display: flex;
+    justify-content: center;
+  
+}
+    
+
+
+body{
+    background-image: url(img/bunker1.jpg);
+    background-size: 100%;
+}
+
