@@ -31,10 +31,11 @@ h3{
     display: flex;
     justify-content: center;
     margin-top: 99px;
+    margin-bottom: 2px;
 }
 
 .texto{
-    color: white;
+    color: "white";
     display: flex;
     justify-content: center;
     margin-top: 99px;
