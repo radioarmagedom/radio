@@ -26,7 +26,12 @@ h3{
     justify-content: center;
     margin-top: 99px;
 }
-    
+
+.radio{
+    display: flex;
+    justify-content: center;
+    margin-top: 99px;
+}
 
 
 body{
