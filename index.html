@@ -7,6 +7,18 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Rádio Armagedom</title>
     <link rel="shortcut icon" type="image/x-icon" href="img/nuke.png">
+    <script>
+        function playAudio() {
+            let x = document.getElementById("myAudio");
+            x.play();
+        }
+        function pauseAudio() {
+            let x = document.getElementById("myAudio");
+            x.pause();
+        }       
+    </script>
+   
+        
     
 </head>
 <body>
@@ -40,7 +52,13 @@
     </div>
             <a href="https://radiosnet.com" target="_blank"> <img src="https://img.radios.com.br/divulgue/app-radiosnet-234x60-a.jpg" alt="Ouça nossa rádio em seu celular ou tablet com Android ou no iPhone e iPads" width="234" height="60" border="0"> </a>
    <!-- <audio src="http://187.106.84.195:8000/radio.mp3" preload="auto" controls></audio> -->       
-        <audio id=audio autoplay="autoplay" controls="controls">
-        <source src="http://187.106.84.195:8000/radio.mp3" type="audio/mp3">
+   <!--     <audio id=audio autoplay="autoplay" controls="controls">
+        <source src="http://187.106.84.195:8000/radio.mp3" type="audio/mp3">-->
+            <audio id="myAudio" controls>
+            <source src="http://187.106.84.195:8000/radio.mp3" type="audio/mpeg">
+           
+        </audio><br>
+        <button onclick="playAudio()">Play</button>
+        <button onclick="pauseAudio()">Pause</button>
 </body>
 </html>
