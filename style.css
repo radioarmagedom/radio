@@ -21,11 +21,15 @@ h3{
     text-shadow: 2px 2px 2px black;
     background-color: rgba(0, 0, 0, .7);
 }
-
 .redes{
     display: flex;
     justify-content: center;
-    margin-top: -5px;
+    
+}    
+.redes1{
+    display: flex;
+    justify-content: center;
+    margin-top: -15px;
 }
 
 .radio{
