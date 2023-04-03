@@ -55,7 +55,9 @@ p{
 
 body{
     background-image: url(img/bunker1.jpg);
-    background-size: cover;
-    background-attachment: fixed;
+    background-repeat: no-repeat;
+  background-position: center center;
+  background-attachment: fixed;
+  background-size: contain;
 }
 
