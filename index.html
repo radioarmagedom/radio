@@ -25,7 +25,7 @@
 <h1><img src="img/logo.png" height="200px" alt="logotipo rádio armagedom"></h1>
 
 
-    <h2>Olá sobrevivente!!!</h2>
+    <h2>Olá sobrevivente!</h2>
     <h3>Seja bem vindo ao nosso bunker! <br>
         Nossas transmissões ao vivo ocorrem toda segunda-feira as 20:30 em nosso canal do Youtube, trazendo um apanhado das notícias mais importantes e inusitadas da semana. <br>
         Enquanto não chega nosso horário marcado, ouça nossas músicas selecionadas clicando no rádio abaixo! <br>
@@ -38,6 +38,19 @@
     </div> -->
    
         <p>Clique no PLAY abaixo para ouvir Rádio Armagedom AO VIVO!</p>
+    <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+<link href="http://vjs.zencdn.net/5.8.0/video-js.css" rel="stylesheet">
+<style>.video-js .vjs-time-control{display: none;} .video-js .vjs-progress-control{display: none;}</style>
+<script src="http://vjs.zencdn.net/ie8/1.1.2/videojs-ie8.min.js"></script>
+<video id="voxplay" class="video-js vjs-default-skin vjs-big-play-centered vjs-16-9" controls preload="auto" playsInline width="640" height="360" poster="http://res.cloudinary.com/cdowebcast/image/upload/v1501940982/webtv/voxstream-webtv_640x360.png">
+<source src="rtmp://radio.radioarmagedom.com:8000/live/123" type="rtmp/mp4">
+<source src="http://stmv1.cdowebcast.com/cdowebcast/cdowebcast/playlist.m3u8" type="application/x-mpegURL">
+<p class="vjs-no-js">To view this video please enable JavaScript, and consider upgrading to a web browser that <a href="http://videojs.com/html5-video-support/" target="_blank">supports HTML5 video</a></p>
+</video>
+<script src="http://vjs.zencdn.net/5.8.0/video.js"></script>
+<script>
+var myPlayer=videojs('voxplay',{},function(){var player=this,src=player.src;player.on("pause",function(){player.one("play",function(){player.src=src;player.load();player.play();});});})
+</script>
      
          <div align="center"> <audio controls>
   <source src="http://radio.radioarmagedom.com:8000/radio.mp3" type="audio/mpeg">
