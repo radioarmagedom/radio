@@ -109,6 +109,136 @@
                     }, false);
             }
 		</script>
+	<script>
+    $(function(){
+		setTimeout(ssec, '158128');
+
+		var tzNow = dayjs();
+		var tzOffset = tzNow.format("Z");
+
+		$.post("http://play.radios.com.br/ajax/player/schedule?tz="+encodeURIComponent(tzOffset), {radio: 206143, time: 1721783121, t:"a44aa8c7b0061cc284ca896b70ac067eb44044a72d358eb87c7fa874a9d6644f"})
+		.done(function(data){
+			if(data.onair){
+				$(".onair").html(data.onair.html);
+				$(".onair").fadeIn("slow");
+				$('.onair [data-toggle="tooltip"]').tooltip();
+			}
+		});
+
+		$.post("http://play.radios.com.br/ajax/player/votar",{radio: 206143, action: "load"})
+		.done(function(data){
+			$("#votacao-message").html(data["message"]);
+			$("#votacao-status").html(data["status"]);
+		})
+		.fail(function(){
+			$("#action-votar").removeClass("btn-success")
+							.addClass("btn-danger");
+			$("#votacao-status").html("Ocorreu um erro, tente novamente");
+		})
+		.always(function(){
+			$("#action-votar").removeAttr('disabled');
+		});
+		
+
+		$("#action-votar").on("click",function(){
+			$("#action-votar").removeClass("btn-danger")
+							.addClass("btn-success");
+			$("#votacao-status").html("Processando...");
+
+			var url = "http://play.radios.com.br/ajax/player/votar";
+			var params = {
+				radio: 206143,
+				r: "175698",
+				t: 1721783121,
+				t1: "657447388705761",
+				t2: "259c7bb7f9380c5f0290284a1e47eff010357e2c86a4b3e426f00555f8c91af7",
+				action: "vote"
+			};
+
+			$.post(url,params)
+			.done(function(data){
+				$("#votacao-message").html(data["message"]);
+				$("#votacao-status").html(data["status"]);
+
+				if(data.success){
+					$("#votacao-message").prepend('<i class="fa fa-check fa-lg text-success"></i> ');
+				}
+
+				if(data.error){
+					$("#action-votar").removeClass("btn-success")
+									.addClass("btn-danger");
+				}
+			})
+			.fail(function(){
+				$("#action-votar").removeClass("btn-success")
+								.addClass("btn-danger");
+				$("#votacao-status").html("Ocorreu um erro, tente novamente");
+			})
+		});
+
+		$(".action-ajuda-anuncios").on("click", function(e){
+			$("#ajuda-anuncios-modal").modal();
+			e.preventDefault();
+		});
+
+		$(".action-ajuda-open-link").on("click", function() {
+			$("#ajuda-radio-modal").modal("hide");
+		});
+
+		$(".action-ajuda-radio").on("click", function(e){
+			$("#ajuda-load").html("");
+			$("#ajuda-loading .loading-panel").hide();
+			$("#ajuda-radio-modal").modal();
+			e.preventDefault();
+		});
+
+		$(".action-ajuda-submit").on("click", function(e) {
+			var type = $(this).attr("data-type");
+
+			var url = "http://play.radios.com.br/ajax/player/ajuda";
+			var params = {
+				radio: 206143,
+				type: type,
+			}; 
+
+			$("#ajuda-load").html("");
+			$("#ajuda-loading .loading-panel").fadeIn();
+
+			$.post(url,params)
+			.done(function(html){
+				$("#ajuda-load").html(html);
+			})
+			.fail(function(){
+				$("#ajuda-load").html('<div class="alert-panel alert alert-danger alert-dismissible">'
+				+ '<button type="button" class="close" data-dismiss="alert">x</button>'
+				+ '<b>Erro!</b> A notificação não foi enviada. Por favor, tente novamente mais tarde. <a href="#" data-dismiss="modal">Fechar</a>'
+				+ '</div>');
+			})
+			.always(function(){
+				$("#ajuda-loading .loading-panel").hide();
+			});
+			e.preventDefault();
+
+		});
+
+		function ssec() {
+			var url = "http://play.radios.com.br/ajax/player/ssec";
+			var params = {
+				radio: 206143,
+				r: "175698",
+				t: 1721783121,
+				t1: "657447388705761",
+				t2: "259c7bb7f9380c5f0290284a1e47eff010357e2c86a4b3e426f00555f8c91af7",
+			};
+
+			$.post(url,params)
+			.done(function(data){
+			});
+		}
+
+    });
+
+</script>
 
 	
     
@@ -138,7 +268,7 @@ MRP.insert({
 
     
 
-    <h2>Olá sobrevivente!</h2>
+    <h2>Olá sobrevivente!!!</h2>
     <h3>Seja bem vindo ao nosso bunker! <br>
     Clique no player acima para ouvir a nossa Rádio Armagedom! <br>
         AO VIVO 24 horas por dia e 7 dias por semana! <br>
