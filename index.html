@@ -35,6 +35,8 @@
 
 
 
+
+	
 <script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js' ></script><script src='https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.10/dayjs.min.js' ></script><script src='https://static.radios.com.br/libs/bootstrap/3.3.4.c/js/bootstrap.min.js' ></script><script src='https://static.radios.com.br/js/base.1700504856.js' ></script><script src='https://static.radios.com.br/libs/muses-player/2.3.1r/mrp.1645217214.js' ></script><script src='https://static.radios.com.br/libs/flowplayer-html/7.2.7/flowplayer.min.1645217214.js' ></script><script src='https://static.radios.com.br/libs/flowplayer-html/7.2.7/audio/flowplayer.audio.min.1645217214.js' ></script>            <script>
                 function initMuses(){
                     MRP.setElementId("player-muses");
@@ -85,7 +87,30 @@
                 });
             }
 		</script>
+				<script>
+            document.getElementById('player-loading').innerHTML = "";
+            if(flowplayer.support.browser.msie || navigator.userAgent.indexOf("Trident/7") > -1 ||
+               flowplayer.support.android ||
+               flowplayer.support.iOS) {
+                    document.getElementById('player-audio').innerHTML   = '            <div id="player-flow-html5" class="player-audio-element fp-playful"></div>            <div class="player-audio-hint"><a id="action-force-play" href="#" title="Clique para forçar a reprodução"><b><u class="text-primary">PRESSIONE</u> o botão <u class="text-success">PLAY</u> para reproduzir a rádio</b></a>, caso não toque automaticamente</div>            <noscript class="text-red">Para que a rádio toque, o seu navegador deve estar com o JavaScript ativado!</noscript>        ';
+                    initFlowPlayer();
 
+                    document.getElementById('action-force-play').addEventListener("click", function(e){
+                        flowplayer("#player-flow-html5").play();
+                        e.preventDefault();
+                    }, false);
+            }else{
+                    document.getElementById('player-audio').innerHTML  += '            <div id="player-muses" class="player-audio-element"></div>            <div class="player-audio-hint"><a id="action-force-play" href="#" title="Clique para forçar a reprodução"><b><u class="text-primary">PRESSIONE</u> o botão <u class="text-success">PLAY</u> para reproduzir a rádio</b></a>, caso não toque automaticamente</div>            <noscript class="text-red">Para que a rádio toque, o seu navegador deve estar com o JavaScript ativado!</noscript>        ';
+                    initMuses();
+
+                    document.getElementById('action-force-play').addEventListener("click", function(e){
+                        MRP.play();
+                        e.preventDefault();
+                    }, false);
+            }
+		</script>
+
+	
     
     <!-- BEGINS: AUTO-GENERATED MUSES RADIO PLAYER CODE -->
     <center>
@@ -113,7 +138,7 @@ MRP.insert({
 
     
 
-    <h2>Olá sobrevivente!!</h2>
+    <h2>Olá sobrevivente!!!</h2>
     <h3>Seja bem vindo ao nosso bunker! <br>
     Clique no player acima para ouvir a nossa Rádio Armagedom! <br>
         AO VIVO 24 horas por dia e 7 dias por semana! <br>
