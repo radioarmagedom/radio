@@ -33,6 +33,60 @@
   Your browser does not support the audio element.
 </audio> -->
 
+
+
+<script src='https://cdnjs.cloudflare.com/ajax/libs/jquery/1.11.3/jquery.min.js' ></script><script src='https://cdnjs.cloudflare.com/ajax/libs/dayjs/1.11.10/dayjs.min.js' ></script><script src='https://static.radios.com.br/libs/bootstrap/3.3.4.c/js/bootstrap.min.js' ></script><script src='https://static.radios.com.br/js/base.1700504856.js' ></script><script src='https://static.radios.com.br/libs/muses-player/2.3.1r/mrp.1645217214.js' ></script><script src='https://static.radios.com.br/libs/flowplayer-html/7.2.7/flowplayer.min.1645217214.js' ></script><script src='https://static.radios.com.br/libs/flowplayer-html/7.2.7/audio/flowplayer.audio.min.1645217214.js' ></script>            <script>
+                function initMuses(){
+                    MRP.setElementId("player-muses");
+                    MRP.insert({
+                    'url':'http://radio.radioarmagedom.com:8000/radio.mp3',
+                    'codec':'aac',
+                    'volume':90,
+                    'autoplay':true,
+                    'buffering':1,
+                    'title':'Player',
+                    'wmode':'transparent',
+                    'skin':'faredirfare',
+                    'width':300,
+                    'height':122,
+                    'tracking': false,
+                    'bgcolor':'#FFFFFF'
+                    });
+                }
+            </script>
+        		<script>
+            var countflowPlayerError = 0;
+            var sourcesFlowPlayer = [
+                    { type: "video/mp4",
+                      src:  "http://radio.radioarmagedom.com:8000/radio.mp3" },
+                    { type: "video/mp4",
+                      engine: "flash",
+                      src:  "http://radio.radioarmagedom.com:8000/radio.mp3?type=.flv" },
+                ];
+            
+            function initFlowPlayer(){          
+                flowplayer("#player-flow-html5", {
+                    clip: {
+                        audio:true,
+                        sources: sourcesFlowPlayer
+                    },
+                    autoplay: true,
+                    audioOnly: true,
+                    mutedAutoplay: false,
+                    live:true
+                }).on("error", function(e, api, err) {
+                    
+                    if(countflowPlayerError == 0 && (flowplayer.support.browser.msie || navigator.userAgent.indexOf("Trident/7") > -1)){
+                        flowplayer("#player-flow-html5").shutdown();
+                        sourcesFlowPlayer.splice(0, 1);
+                        initFlowPlayer();
+                    }
+                    
+                });
+            }
+		</script>
+
+    
     <!-- BEGINS: AUTO-GENERATED MUSES RADIO PLAYER CODE -->
     <center>
 <script type="text/javascript" src="https://hosted.muses.org/mrp.js"></script>
