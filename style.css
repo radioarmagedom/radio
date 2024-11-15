@@ -31,6 +31,10 @@ h3{
     justify-content: center;
     margin-top: -12px;
 }
+.mesh{
+    margin: 5px;
+    border-radius: 5px;
+}
 
 .radio{
     display: flex;
