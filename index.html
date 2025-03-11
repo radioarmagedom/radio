@@ -23,10 +23,35 @@
 
 </head>
 <body>
+__________________________________________________________________________________________________
+	
+    <style>[data-bs-theme] body.page-minimal {
+    background-image: url('/static/uploads/radio_armagedom/background.1719947422.jpg');
+}</style></head>
 
+<body class="page-minimal page-station-public-player station-radio_armagedom">
+
+    <script>
+        ready(() => {
+            if ('serviceWorker' in navigator) {
+                window.addEventListener('load', function () {
+                    navigator.serviceWorker.register('/public/sw.js');
+                });
+            }
+        });
+    </script>
+      <script type="module" src="/static/vite_dist/assets/PublicFullPlayer-3gUM3iPK.js"></script>
+    <script type="text/javascript">
+        let Vue_PublicFullPlayer;
+        ready(() => {
+            Vue_PublicFullPlayer = window.vueComponent('#public-radio-player', {"enableAdvancedFeatures":true,"locale":"pt_BR","localeShort":"pt","localeWithDashes":"pt-BR","timeConfig":{},"componentProps":{"stationShortName":"radio_armagedom","useStatic":true,"useSse":true,"offlineText":null,"showAlbumArt":true,"autoplay":false,"showHls":false,"downloadPlaylistUri":"\/public\/radio_armagedom\/playlist.pls","stationName":"Radio Armagedom","enableRequests":true,"requestListUri":"\/api\/station\/1\/requests","customFields":[]}});
+        });
+    </script>
+	
     
-    
-<h1><img src="img/logo.png" height="200px" alt="logotipo rádio armagedom"></h1>
+
+_________________________________________________________________________________________________________	
+	<h1><img src="img/logo.png" height="200px" alt="logotipo rádio armagedom"></h1>
     
 <div align="center"> <audio controls>
   <source src="https://radio.radioarmagedom.com:8000/radio.mp3" type="audio/mpeg">
