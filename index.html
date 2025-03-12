@@ -35,7 +35,13 @@ ________________________________________________________________________________
 <h4>
 	Tocando agora:
 	<br>
-	<source scr="https://radio.radioarmagedom.com/api/nowplaying_static/radio_armagedom.txt" type="text">
+<div id="nowPlaying">
+        <?php
+            $url = "https://radio.radioarmagedom.com/api/nowplaying_static/radio_armagedom.txt";
+            $text = @file_get_contents($url);
+            echo $text ? htmlspecialchars($text) : "Erro ao carregar informação";
+        ?>
+    </div>
 </h4>
     <h2>Olá sobrevivente!!!</h2>
     <h3>Seja bem vindo ao nosso bunker! <br>
