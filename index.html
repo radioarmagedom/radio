@@ -20,12 +20,57 @@
     <title>Rádio Armagedom</title>
     <link rel="shortcut icon" type="image/x-icon" href="img/nuke.png">
     
+________________________________________________________________________________________________
 
+<style>
+        body {
+            font-family: Arial, sans-serif;
+            text-align: center;
+            margin: 50px;
+            background-color: #222;
+            color: #fff;
+        }
+        .player-container {
+            padding: 20px;
+            background-color: #333;
+            border-radius: 10px;
+            display: inline-block;
+        }
+        audio {
+            width: 100%;
+            margin-top: 10px;
+        }
+    </style>
+
+_____________________________________________________________________________________________	
 </head>
 <body>
-__________________________________________________________________________________________________
-	 
-_________________________________________________________________________________________________________	
+_____________________________________________________________________________________________
+	 <div class="player-container">
+        <h2>Rádio Armagedom</h2>
+        <p id="now-playing">Carregando...</p>
+        <audio controls>
+            <source src="https://radio.radioarmagedom.com:8000/radio.mp3" type="audio/mpeg">
+            Seu navegador não suporta o elemento de áudio.
+        </audio>
+    </div>
+    
+    <script>
+        function updateNowPlaying() {
+            fetch('https://radio.radioarmagedom.com/api/nowplaying_static/radio_armagedom.txt')
+                .then(response => response.text())
+                .then(data => {
+                    document.getElementById('now-playing').innerText = "Tocando agora: " + data;
+                })
+                .catch(error => {
+                    console.error('Erro ao buscar metadados:', error);
+                });
+        }
+        
+        setInterval(updateNowPlaying, 10000); // Atualiza a cada 10 segundos
+        updateNowPlaying(); // Atualiza imediatamente ao carregar
+    </script>
+___________________________________________________________________________________________________________	
 	<h1><img src="img/logo.png" height="200px" alt="logotipo rádio armagedom"></h1>
     
 <div align="center"> <audio controls>
