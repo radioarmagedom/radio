@@ -35,13 +35,8 @@ ________________________________________________________________________________
 <h4>
 	Tocando agora:
 	<br>
-<div id="nowPlaying">
-        <?php
-            $url = "https://radio.radioarmagedom.com/api/nowplaying_static/radio_armagedom.txt";
-            $text = @file_get_contents($url);
-            echo $text ? htmlspecialchars($text) : "Erro ao carregar informação";
-        ?>
-    </div>
+	<iframe src="https://radio.radioarmagedom.com/api/nowplaying_static/radio_armagedom.txt"></iframe>
+
 </h4>
     <h2>Olá sobrevivente!!!</h2>
     <h3>Seja bem vindo ao nosso bunker! <br>
